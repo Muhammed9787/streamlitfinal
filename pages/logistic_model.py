@@ -1,7 +1,7 @@
 # big data
 # python libraries
+# import pages.sir as sir
 from datetime import datetime, timedelta
-import json
 import itertools
 import time
 import os
@@ -14,8 +14,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 import pylab
 import seaborn as sns
-import pycountry
-from PIL import Image
+# from PIL import Image
 from IPython.display import HTML as html_print
 # machine learning libraries
 import scipy
@@ -25,6 +24,7 @@ from scipy.optimize import curve_fit
 from scipy.optimize import fsolve
 # app
 import streamlit as st
+
 
 
 
