@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 import altair as alt
-import pages.sir
 
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
