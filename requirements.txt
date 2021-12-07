@@ -9,5 +9,6 @@ scipy==1.5.2
 xlrd==1.2.0
 statsmodels==0.12.0
 cython==0.29
+pydeck==0.7.0
+altair==4.1.0
 mysql-connector-python==8.0.26
-altair==4.2.0
