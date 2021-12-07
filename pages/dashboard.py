@@ -3,16 +3,17 @@ import pandas as pd
 import numpy as np
 import pydeck as pdk
 import altair as alt
+# import pages.sir
 
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def wwConfirmedDataCollection():
-    death_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
-    recovery_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
-    confirmed_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
-    confirmed_df = pd.read_csv(confirmed_url)
-    death_df = pd.read_csv(death_url)
-    recovery_df = pd.read_csv(recovery_url)
+    # death_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+    # recovery_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
+    # confirmed_url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+    confirmed_df = pd.read_csv("time_series_covid19_confirmed_global.csv")
+    death_df = pd.read_csv("time_series_covid19_deaths_global.csv")
+    recovery_df = pd.read_csv("time_series_covid19_recovered_global.csv")
     return confirmed_df, death_df, recovery_df
 
 # def displayRawData(confirmed_df, death_df, recovery_df):
