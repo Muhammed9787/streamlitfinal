@@ -7,4 +7,6 @@ numpy==1.20.3
 plotly==5.3.1
 scipy==1.5.2
 xlrd==1.2.0
+statsmodels==1.19.2
+cython==0.29
 mysql-connector-python==8.0.26
