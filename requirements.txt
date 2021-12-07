@@ -9,4 +9,3 @@ scipy==1.5.2
 altair==4.1.0
 pydeck==0.7.0
 xlrd==1.2.0
-mysql-connector-python==8.0.26
