@@ -279,7 +279,7 @@ def app():
                 )
                 title = f"Total reported cases for {selected_country}"
             
-            st.altair_chart(altairLineChartGraphing(title, source), use_container_width=True)    
+            # st.altair_chart(altairLineChartGraphing(title, source), use_container_width=True)    
 
         else:
             full_table = full_table[full_table["date"] == selected_date[1]]
@@ -331,7 +331,7 @@ def app():
                 tooltip=TOOLTIP,
             )
             st.write("## Total Number of Confirmed Cases All Time")
-            st.pydeck_chart(r)
+            # st.pydeck_chart(r)
     else:
         st.write("Select Valid Dates to continue")
 
