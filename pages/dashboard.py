@@ -224,7 +224,7 @@ def altairLineChartGraphing(graphTitle, source):
     return layerChart
 
 def app():
-    st.set_page_config(layout="wide") 
+    # st.set_page_config(layout="wide") 
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
              unsafe_allow_html=True)
 
