@@ -253,7 +253,7 @@ def app():
         if user_selectionbox_input == "Select from list of countries":
             full_table = full_table[(full_table['date'] >= selected_date[0]) & (full_table['date'] <= selected_date[1])]
             
-            # full_table = full_table[full_table["date"] == (between(selected_date[0], selected_date[1]))]
+            full_table = full_table[full_table["date"] == (between(selected_date[0], selected_date[1]))]
             list_of_countries = full_table["location"].unique()
             selected_country = st.selectbox("Select country", list_of_countries)
 
@@ -279,7 +279,7 @@ def app():
                 )
                 title = f"Total reported cases for {selected_country}"
             
-            # st.altair_chart(altairLineChartGraphing(title, source), use_container_width=True)    
+            st.altair_chart(altairLineChartGraphing(title, source), use_container_width=True)    
 
         else:
             full_table = full_table[full_table["date"] == selected_date[1]]
