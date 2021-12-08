@@ -15,15 +15,15 @@ def wwConfirmedDataCollection():
     recovery_df = pd.read_csv(recovery_url)
     return confirmed_df, death_df, recovery_df
 
-def displayRawData(confirmed_df, death_df, recovery_df):
-    if st.sidebar.checkbox("Display Raw Data From CSSEGIS", False) == True:
-        st.write('Data from "CSSEGISandData"')
-        st.write("Confirmed Cases")
-        st.write(confirmed_df)
-        st.write("Death from Cases")
-        st.write(death_df)
-        st.write("Recovered from Cases")
-        st.write(recovery_df)
+# def displayRawData(confirmed_df, death_df, recovery_df):
+#     if st.sidebar.checkbox("Display Raw Data From CSSEGIS", False) == True:
+#         st.write('Data from "CSSEGISandData"')
+#         st.write("Confirmed Cases")
+#         st.write(confirmed_df)
+#         st.write("Death from Cases")
+#         st.write(death_df)
+#         st.write("Recovered from Cases")
+#         st.write(recovery_df)
 
 def dataMassaging(confirmed_df, death_df, recovery_df):
     # converts the column names to lowercase
@@ -112,19 +112,19 @@ def dataMassaging(confirmed_df, death_df, recovery_df):
     )
     new_recovery_df = new_recovery_df.reset_index(drop=True)
 
-    if (
-        st.sidebar.checkbox(
-            "Display join data after canada calculation", False
-        )
-        == True
-    ):
-        st.write("JOINING DATA TOGETHER ON DATE")
-        st.write("Confirmed")
-        st.write(new_confirmed_df)
-        st.write("Dead")
-        st.write(new_death_df)
-        st.write("Recovered")
-        st.write(new_recovery_df)
+    # if (
+    #     st.sidebar.checkbox(
+    #         "Display join data after canada calculation", False
+    #     )
+    #     == True
+    # ):
+    #     st.write("JOINING DATA TOGETHER ON DATE")
+    #     st.write("Confirmed")
+    #     st.write(new_confirmed_df)
+    #     st.write("Dead")
+    #     st.write(new_death_df)
+    #     st.write("Recovered")
+    #     st.write(new_recovery_df)
 
     return new_confirmed_df, new_death_df, new_recovery_df
 
@@ -224,13 +224,13 @@ def altairLineChartGraphing(graphTitle, source):
     return layerChart
 
 def app():
-    # st.set_page_config(layout="wide") 
+    st.set_page_config(layout="wide") 
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
              unsafe_allow_html=True)
 
     confirmed_df, death_df, recovery_df = wwConfirmedDataCollection()
     st.title("Covid-19 🦠 Pandemic Data Visualization")
-    displayRawData(confirmed_df, death_df, recovery_df)
+    # displayRawData(confirmed_df, death_df, recovery_df)
     confirmed_df, death_df, recovery_df = dataMassaging(
         confirmed_df, death_df, recovery_df
     )
@@ -238,12 +238,10 @@ def app():
 
     st.write('\nData from "CSSEGISandData POST data massaging"')
     
-    user_selectionbox_input = st.selectbox(
-        "Select an option", ["Global", "Select from list of countries"]
-    )
+    user_selectionbox_input = "Select from list of countries"
+    
     min_date_found = full_table["date"].min()
     max_date_found = full_table["date"].max()
-
     selected_date = st.date_input(
         "Pick a date",
         (min_date_found, max_date_found)
@@ -253,9 +251,9 @@ def app():
         if user_selectionbox_input == "Select from list of countries":
             full_table = full_table[(full_table['date'] >= selected_date[0]) & (full_table['date'] <= selected_date[1])]
             
-            full_table = full_table[full_table["date"] == (between(selected_date[0], selected_date[1]))]
+            # full_table = full_table[full_table["date"] == (between(selected_date[0], selected_date[1]))]
             list_of_countries = full_table["location"].unique()
-            selected_country = st.selectbox("Select country", list_of_countries)
+            selected_country = 'Sudan'
 
             mask_countries = full_table["location"] == (selected_country)
             full_table = full_table[mask_countries]
@@ -269,7 +267,7 @@ def app():
             user_input = st.selectbox(
                 "Select an option", ["Total Number of Cases", "New Cases Per Day"]
             )
-            st.write(full_table)
+            # st.write(full_table)
             if user_input == "New Cases Per Day":
                 source = pd.DataFrame(full_table, columns=["date", "new_confirmed", "new_recovered", "new_deaths"])
                 title = f"New Cases Per Day for {selected_country}"
@@ -331,7 +329,7 @@ def app():
                 tooltip=TOOLTIP,
             )
             st.write("## Total Number of Confirmed Cases All Time")
-            # st.pydeck_chart(r)
+            st.pydeck_chart(r)
     else:
         st.write("Select Valid Dates to continue")
 
